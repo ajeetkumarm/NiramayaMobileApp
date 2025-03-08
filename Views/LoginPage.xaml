@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Kadam.ViewModels"
+             x:Class="Kadam.Views.LoginPage"
+             x:DataType="viewmodel:LoginViewModel"
+             BackgroundColor="LightGray"
+             Title="">
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
+            <Image Source="logo.png" HeightRequest="100" HorizontalOptions="Center" />
+
+            <VerticalStackLayout Spacing="5" Padding="0">
+                <Border Padding="20,10" Stroke="White" StrokeThickness="1" BackgroundColor="White" Margin="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout>
+                        <Label Text="SIGN IN" FontSize="24" TextColor="Black" FontAttributes="Bold" Padding="0,5" HorizontalOptions="StartAndExpand" />
+
+                        <Label Text="Username" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="2,10,0,0" />
+                        <Border Padding="0" Stroke="LightGray" StrokeThickness="2" Margin="0,5">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*" />
+                                    <ColumnDefinition Width="85*" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView Grid.Column="0" Color="LightGrey" />
+                                <Image Grid.Column="0" Margin="5,0,0,0" Source="user" HeightRequest="36" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <Entry Grid.Column="1" FontSize="15" TextColor="Black" Keyboard="Email" Placeholder="Email" 
+                                       PlaceholderColor="{StaticResource Gray500}" Text="{Binding Email, Mode=TwoWay}" 
+                                       
+                                       >
+                                   
+                                </Entry>
+                            </Grid>
+                        </Border>
+
+                        <Label Text="Password" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="2,8,0,0" />
+                        <Border Padding="0" Stroke="LightGray" StrokeThickness="2" Margin="0,5">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*" />
+                                    <ColumnDefinition Width="85*" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView Grid.Column="0" Color="LightGrey" />
+                                <Image Grid.Column="0" Margin="5,0,0,0" Source="lock" HeightRequest="36" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <Entry Grid.Column="1" FontSize="15" TextColor="Black" IsPassword="True" Placeholder="********" 
+                                       PlaceholderColor="{StaticResource Gray500}" Text="{Binding Password, Mode=TwoWay}" 
+                                       Style="{StaticResource NoUnderlineEntry}"
+                                       />
+                            </Grid>
+                        </Border>
+
+                        <Button Text="SIGN IN" Command="{Binding LoginCommand}" BackgroundColor="{StaticResource Primary}" 
+                                FontSize="20" TextColor="White" Margin="0,10" IsEnabled="{Binding IsNotLoading}" />
+                        
+                        <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                                         IsVisible="{Binding IsLoading}"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         Color="{StaticResource Primary}" />
+
+                        <Label Text="Forgot Password?" TextColor="{StaticResource Primary}" HorizontalOptions="Start" FontAttributes="Bold" FontSize="20" Margin="0,10">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

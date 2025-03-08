@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\viewmodels\\studentregistrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:viewmodels\\studentregistrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\kadam.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:kadam.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\utilities\\apphelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:utilities\\apphelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\views\\studentregistration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:views\\studentregistration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\dto\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:dto\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\dto\\appinstitutiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:dto\\appinstitutiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|e:\\projects\\argosinfotech\\2024\\dotnet\\kadammobileapp\\kadam\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{449B4150-D965-4222-8FA1-1A0306FFB21E}|Kadam.csproj|solutionrelative:services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Kadam",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Kadam.csproj",
+              "RelativeDocumentMoniker": "Kadam.csproj",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Kadam.csproj",
+              "RelativeToolTip": "Kadam.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-07T18:29:51.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppHelper.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Utilities\\AppHelper.cs",
+              "RelativeDocumentMoniker": "Utilities\\AppHelper.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Utilities\\AppHelper.cs",
+              "RelativeToolTip": "Utilities\\AppHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T11:01:32.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAIwGAAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T11:00:23.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentRegistrationViewModel.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\ViewModels\\StudentRegistrationViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\StudentRegistrationViewModel.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\ViewModels\\StudentRegistrationViewModel.cs",
+              "RelativeToolTip": "ViewModels\\StudentRegistrationViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T10:40:03.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppInstitutionDTO.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\DTO\\AppInstitutionDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\AppInstitutionDTO.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\DTO\\AppInstitutionDTO.cs",
+              "RelativeToolTip": "DTO\\AppInstitutionDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T06:26:05.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Student.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\DTO\\Student.cs",
+              "RelativeDocumentMoniker": "DTO\\Student.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\DTO\\Student.cs",
+              "RelativeToolTip": "DTO\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T06:20:26.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StudentService.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Services\\StudentService.cs",
+              "RelativeDocumentMoniker": "Services\\StudentService.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Services\\StudentService.cs",
+              "RelativeToolTip": "Services\\StudentService.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwC0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T06:14:28.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "Services\\LoginService.cs",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Services\\LoginService.cs",
+              "RelativeToolTip": "Services\\LoginService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T06:04:55.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentRegistration.xaml",
+              "DocumentMoniker": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Views\\StudentRegistration.xaml",
+              "RelativeDocumentMoniker": "Views\\StudentRegistration.xaml",
+              "ToolTip": "E:\\Projects\\Argosinfotech\\2024\\Dotnet\\KadamMobileApp\\Kadam\\Views\\StudentRegistration.xaml",
+              "RelativeToolTip": "Views\\StudentRegistration.xaml",
+              "ViewState": "AgIAANMAAAAAAAAAAAAAAPIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-04T15:24:52.19Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
