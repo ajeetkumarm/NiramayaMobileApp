@@ -1,7 +1,7 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:views="clr-namespace:Kadam.Views"
-       x:Class="Kadam.AppShell"
+       xmlns:views="clr-namespace:NCD.Views"
+       x:Class="NCD.AppShell"
        Shell.FlyoutBehavior="Flyout"
        Shell.ForegroundColor="White"
        Shell.TitleColor="White"
@@ -20,13 +20,13 @@
          ContentTemplate="{DataTemplate views:Dashboard}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Student Registration"
+    <FlyoutItem Title="Registration"
              Icon="userp"
-             Route="StudentRegistration"
-             x:Name="StudentRegistrationItem"
+             Route="Registration"
+             x:Name="RegistrationItem"
              IsVisible="False">
         <ShellContent 
-         ContentTemplate="{DataTemplate views:StudentRegistration}" />
+         ContentTemplate="{DataTemplate views:Registration}" />
     </FlyoutItem>
     <Shell.FlyoutHeader>
         <StackLayout Padding="10,30" HorizontalOptions="FillAndExpand">

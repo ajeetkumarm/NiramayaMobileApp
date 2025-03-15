@@ -1,4 +1,4 @@
-﻿namespace Kadam.DTO
+﻿namespace NCD.DTO
 {
     public class Student
     {
@@ -13,8 +13,8 @@
         public int InstitutionId { get; set; }
         public string Section { get; set; } = string.Empty;
         public int GradeId { get; set; } 
-        public string StudentRegistratioNumber { get; set; } = string.Empty;
-        public int ChildStatudBeforeKadamSTC { get; set; }
+        public string Registrationumber { get; set; } = string.Empty;
+        public int ChildStatudBeforeNCDSTC { get; set; }
         public int HowLongPlaningToStayThisArea { get; set; }
         public int Class { get; set; }
         public int Reasons { get; set; }

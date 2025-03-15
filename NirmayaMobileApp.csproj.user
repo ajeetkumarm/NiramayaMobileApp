@@ -21,7 +21,7 @@
     <MauiXaml Update="Views\LoginPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\StudentRegistration.xaml">
+    <MauiXaml Update="Views\Registration.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

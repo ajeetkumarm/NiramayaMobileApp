@@ -1,8 +1,8 @@
-﻿using Kadam.DTO;
+﻿using NCD.DTO;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace Kadam.Services
+namespace NCD.Services
 {
     public class LoginService : BaseService
     {

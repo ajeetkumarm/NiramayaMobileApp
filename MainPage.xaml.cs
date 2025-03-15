@@ -1,4 +1,4 @@
-﻿namespace Kadam
+﻿namespace NCD
 {
     public partial class MainPage : ContentPage
     {

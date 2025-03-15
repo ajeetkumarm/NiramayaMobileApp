@@ -20,10 +20,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Kadam</ApplicationTitle>
+		<ApplicationTitle>NCD</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.kadam</ApplicationId>
+		<ApplicationId>com.companyname.NCD</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -68,7 +68,7 @@
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\StudentRegistration.xaml">
+	  <MauiXaml Update="Views\Registration.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

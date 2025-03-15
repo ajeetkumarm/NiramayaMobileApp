@@ -1,6 +1,6 @@
-using Kadam.Services;
+using NCD.Services;
 
-namespace Kadam.Views;
+namespace NCD.Views;
 
 public partial class Dashboard : ContentPage
 {

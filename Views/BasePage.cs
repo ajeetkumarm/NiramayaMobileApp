@@ -1,4 +1,4 @@
-﻿namespace Kadam.Views
+﻿namespace NCD.Views
 {
     public partial class BasePage : ContentPage
     {

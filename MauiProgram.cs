@@ -1,9 +1,9 @@
-﻿using Kadam.Services;
-using Kadam.ViewModels;
-using Kadam.Views;
+﻿using NCD.Services;
+using NCD.ViewModels;
+using NCD.Views;
 using Microsoft.Extensions.Logging;
 
-namespace Kadam
+namespace NCD
 {
     public static class MauiProgram
     {
@@ -48,12 +48,12 @@ namespace Kadam
             builder.Services.AddSingleton<IToolbarService, ToolbarService>();
             // Register ViewModels
             builder.Services.AddTransient<LoginViewModel>();
-            builder.Services.AddTransient<StudentRegistrationViewModel>();
+            builder.Services.AddTransient<RegistrationViewModel>();
 
             // Register Pages
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<Dashboard>();
-            builder.Services.AddTransient<StudentRegistration>();
+            builder.Services.AddTransient<Registration>();
             //builder.Services.AddTransient<AppShell>();
 
 #if DEBUG

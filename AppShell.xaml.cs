@@ -1,6 +1,6 @@
-﻿using Kadam.Views;
+﻿using NCD.Views;
 
-namespace Kadam
+namespace NCD
 {
     public partial class AppShell : Shell
     {
@@ -14,7 +14,7 @@ namespace Kadam
         {
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(Dashboard), typeof(Dashboard));
-            Routing.RegisterRoute(nameof(StudentRegistration), typeof(StudentRegistration));
+            Routing.RegisterRoute(nameof(Registration), typeof(Registration));
 
             // Register other pages here
         }
@@ -25,7 +25,7 @@ namespace Kadam
             //AuthenticatedContent.IsVisible = true;
             //LoginPage.IsVisible = false;
             DashboardItem.IsVisible = true;
-            StudentRegistrationItem.IsVisible = true;
+            RegistrationItem.IsVisible = true;
         }
         
     }

@@ -1,6 +1,6 @@
-﻿using Kadam.Services;
+﻿using NCD.Services;
 
-namespace Kadam
+namespace NCD
 {
     public partial class App : Application
     {

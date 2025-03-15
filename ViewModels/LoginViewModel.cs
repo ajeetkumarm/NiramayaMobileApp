@@ -1,11 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Kadam.Services;
+using NCD.Services;
 using System.ComponentModel.DataAnnotations;
-using Kadam.DTO;
+using NCD.DTO;
 using Newtonsoft.Json;
 
-namespace Kadam.ViewModels
+namespace NCD.ViewModels
 {
     public partial class LoginViewModel : ObservableObject
     {

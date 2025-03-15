@@ -1,4 +1,4 @@
-﻿namespace Kadam.Services
+﻿namespace NCD.Services
 {
     public interface IToolbarService
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace Kadam.Utilities
+namespace NCD.Utilities
 {
     public static class AppHelper
     {

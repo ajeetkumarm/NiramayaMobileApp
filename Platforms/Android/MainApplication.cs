@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Kadam
+namespace NCD
 {
     [Application]
     public class MainApplication : MauiApplication

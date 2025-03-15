@@ -1,4 +1,4 @@
-﻿namespace Kadam.DTO
+﻿namespace NCD.DTO
 {
     public class ServiceResponseDTO
     {

@@ -1,4 +1,4 @@
-﻿using Kadam.DTO;
+﻿using NCD.DTO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kadam.Services
+namespace NCD.Services
 {
     public class StudentService : BaseService
     {

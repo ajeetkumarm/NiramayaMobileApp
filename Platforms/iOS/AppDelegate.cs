@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Kadam
+namespace NCD
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

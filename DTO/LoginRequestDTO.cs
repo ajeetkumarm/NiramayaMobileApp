@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kadam.DTO
+namespace NCD.DTO
 {
     public class LoginRequestDTO
     {

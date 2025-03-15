@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Kadam
+namespace NCD
 {
     public class Program
     {

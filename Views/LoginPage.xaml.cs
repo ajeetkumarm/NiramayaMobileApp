@@ -1,6 +1,6 @@
-using Kadam.ViewModels;
+using NCD.ViewModels;
 
-namespace Kadam.Views;
+namespace NCD.Views;
 
 public partial class LoginPage : ContentPage
 {
