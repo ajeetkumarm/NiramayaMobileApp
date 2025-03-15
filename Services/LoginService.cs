@@ -15,7 +15,7 @@ namespace NCD.Services
                 string jsonData = JsonConvert.SerializeObject(LoginInfo);
                 StringContent content = new(jsonData, Encoding.UTF8, "application/json");
                 HttpResponseMessage response;
-                response = await Client.PostAsync(BaseUrl + LoginPath + "/LoginToken", content);
+                response = await Client.PostAsync(BaseUrl + LoginPath + "/ValidateUser", content);
                 string dataResult = await response.Content.ReadAsStringAsync();
                 _responseResult = JsonConvert.DeserializeObject<ServiceResponseDTO>(dataResult) ?? new ServiceResponseDTO();
             }

@@ -8,7 +8,7 @@
              Title="">
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
-            <Image Source="logo.png" HeightRequest="100" HorizontalOptions="Center" />
+            <Image Source="humanalogo.png" HeightRequest="100" HorizontalOptions="Center" />
 
             <VerticalStackLayout Spacing="5" Padding="0">
                 <Border Padding="20,10" Stroke="White" StrokeThickness="1" BackgroundColor="White" Margin="0">

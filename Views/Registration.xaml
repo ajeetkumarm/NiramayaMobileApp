@@ -3,9 +3,134 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NCD.Views.Registration"
              Title="Registration">
+    
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-           
-        </VerticalStackLayout>
+        <StackLayout Padding="20" Spacing="15">
+                    
+            <Label Text="Registration Form" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" 
+                   Margin="0,10,0,20" />
+
+            <!-- Name of the Person -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name of the Person:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Entry Text="{Binding Name}" Placeholder="Enter full name" />
+                <Label Text="{Binding NameError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding NameError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Father/Husband Name -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Father/Husband Name:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Entry Text="{Binding FatherHusbandName}" Placeholder="Enter father/husband name" />
+                <Label Text="{Binding FatherHusbandNameError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding FatherHusbandNameError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Age -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Age:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Entry Text="{Binding Age}" Placeholder="Enter age" Keyboard="Numeric" />
+                <Label Text="{Binding AgeError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding AgeError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Gender -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gender:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Picker Title="--Select--" 
+                        ItemsSource="{Binding Genders}" 
+                        SelectedItem="{Binding SelectedGender}" />
+                <Label Text="{Binding GenderError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding GenderError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Marital Status -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Marital Status:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Picker Title="--Select--" 
+                        ItemsSource="{Binding MaritalStatuses}" 
+                        SelectedItem="{Binding SelectedMaritalStatus}" />
+                <Label Text="{Binding MaritalStatusError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding MaritalStatusError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Telephone No -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Telephone No:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Entry Text="{Binding TelephoneNo}" Placeholder="Enter telephone number" Keyboard="Telephone" />
+                <Label Text="{Binding TelephoneNoError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding TelephoneNoError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Address -->
+            <StackLayout>
+                <Label Text="Address:" VerticalOptions="Center" />
+                <Editor Text="{Binding Address}" 
+                        Placeholder="Enter address" 
+                        HeightRequest="100" 
+                        AutoSize="TextChanges" />
+            </StackLayout>
+
+            <!-- Type of Key and Vulnerable Population -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Type of Key and Vulnerable Population:" VerticalOptions="Center" />
+                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
+                </StackLayout>
+                <Picker Title="--Select--" 
+                        ItemsSource="{Binding KeyPopulationTypes}" 
+                        SelectedItem="{Binding SelectedKeyPopulationType}" />
+                <Label Text="{Binding KeyPopulationTypeError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding KeyPopulationTypeError, Converter={StaticResource StringNotEmptyConverter}}" />
+            </StackLayout>
+
+            <!-- Occupation -->
+            <StackLayout>
+                <Label Text="Occupation:" VerticalOptions="Center" />
+                <Picker Title="--Select Occupation--" 
+                        ItemsSource="{Binding Occupations}" 
+                        SelectedItem="{Binding SelectedOccupation}" />
+            </StackLayout>
+
+            <!-- Buttons -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,20,0,0">
+                <Button Text="Submit" 
+                        Command="{Binding SubmitCommand}"
+                        BackgroundColor="#3498db"
+                        TextColor="White"
+                        WidthRequest="120"
+                        HeightRequest="50"
+                        CornerRadius="5" />
+
+                <Button Text="Reset" 
+                        Command="{Binding ResetCommand}"
+                        BackgroundColor="#e74c3c"
+                        TextColor="White"
+                        WidthRequest="120"
+                        HeightRequest="50"
+                        CornerRadius="5" />
+            </StackLayout>
+        </StackLayout>
     </ScrollView>
 </ContentPage>
