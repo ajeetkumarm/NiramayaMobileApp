@@ -1,136 +1,250 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:NCD.Converters"
              x:Class="NCD.Views.Registration"
-             Title="Registration">
-    
+             Title="Registration"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView>
-        <StackLayout Padding="20" Spacing="15">
-                    
-            <Label Text="Registration Form" 
-                   FontSize="24" 
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" 
-                   Margin="0,10,0,20" />
+        <Grid>
+            <StackLayout Padding="20" Spacing="5">
 
-            <!-- Name of the Person -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Name of the Person:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Entry Text="{Binding Name}" Placeholder="Enter full name" />
-                <Label Text="{Binding NameError}" TextColor="Red" FontSize="Small"
+                <!-- Name of the Person -->
+                <Label Text="Name of the Person" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry Text="{Binding Name}" 
+                           Placeholder="Enter full name" 
+                           Margin="10,0"
+                           HeightRequest="40"
+                           FontSize="14"/>
+                </Border>
+                <Label Text="{Binding NameError}" 
+                       TextColor="Red" 
+                       FontSize="12"
+                       Margin="0,0,0,2"
                        IsVisible="{Binding NameError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
 
-            <!-- Father/Husband Name -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Father/Husband Name:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Entry Text="{Binding FatherHusbandName}" Placeholder="Enter father/husband name" />
-                <Label Text="{Binding FatherHusbandNameError}" TextColor="Red" FontSize="Small"
+                <!-- Father/Husband Name -->
+                <Label Text="Father/Husband Name" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry Text="{Binding FatherHusbandName}" 
+                           Placeholder="Enter father/husband name" 
+                           Margin="10,0"
+                           HeightRequest="40"
+                           FontSize="14"/>
+                </Border>
+                <Label Text="{Binding FatherHusbandNameError}" 
+                       TextColor="Red" 
+                       FontSize="12"
+                       Margin="0,0,0,2"
                        IsVisible="{Binding FatherHusbandNameError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
 
-            <!-- Age -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Age:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Entry Text="{Binding Age}" Placeholder="Enter age" Keyboard="Numeric" />
+                <!-- Age -->
+                <Label Text="Age" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry Text="{Binding Age}" 
+                           Placeholder="0" 
+                           Keyboard="Numeric" 
+                           Margin="10,0"
+                           HeightRequest="40"
+                           FontSize="14"/>
+                </Border>
                 <Label Text="{Binding AgeError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding AgeError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
+                   IsVisible="{Binding AgeError, Converter={StaticResource StringNotEmptyConverter}}" />
 
-            <!-- Gender -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Gender:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Picker Title="--Select--" 
-                        ItemsSource="{Binding Genders}" 
-                        SelectedItem="{Binding SelectedGender}" />
+                <!-- Gender -->
+                <Label Text="Gender" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select" 
+                            ItemsSource="{Binding Genders}" 
+                            SelectedItem="{Binding SelectedGender}"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
                 <Label Text="{Binding GenderError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding GenderError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
+                   IsVisible="{Binding GenderError, Converter={StaticResource StringNotEmptyConverter}}" />
 
-            <!-- Marital Status -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Marital Status:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Picker Title="--Select--" 
-                        ItemsSource="{Binding MaritalStatuses}" 
-                        SelectedItem="{Binding SelectedMaritalStatus}" />
+                <!-- Marital Status -->
+                <Label Text="Marital Status" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select" 
+                            ItemsSource="{Binding MaritalStatuses}" 
+                            SelectedItem="{Binding SelectedMaritalStatus}"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
                 <Label Text="{Binding MaritalStatusError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding MaritalStatusError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
+                   IsVisible="{Binding MaritalStatusError, Converter={StaticResource StringNotEmptyConverter}}" />
 
-            <!-- Telephone No -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Telephone No:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Entry Text="{Binding TelephoneNo}" Placeholder="Enter telephone number" Keyboard="Telephone" />
+                <!-- Telephone No -->
+                <Label Text="Telephone No" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry Text="{Binding TelephoneNo}" 
+                           Placeholder="Enter telephone number" 
+                           Keyboard="Telephone" 
+                           Margin="10,0"
+                           HeightRequest="40"
+                           FontSize="14"/>
+                </Border>
                 <Label Text="{Binding TelephoneNoError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding TelephoneNoError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
+                   IsVisible="{Binding TelephoneNoError, Converter={StaticResource StringNotEmptyConverter}}" />
 
-            <!-- Address -->
-            <StackLayout>
-                <Label Text="Address:" VerticalOptions="Center" />
-                <Editor Text="{Binding Address}" 
-                        Placeholder="Enter address" 
-                        HeightRequest="100" 
-                        AutoSize="TextChanges" />
-            </StackLayout>
+                <!-- Address -->
+                <Label Text="Address" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Editor Text="{Binding Address}" 
+                            Placeholder="Enter address" 
+                            HeightRequest="80"
+                            AutoSize="TextChanges"
+                            Margin="10,5"
+                            FontSize="14"/>
+                </Border>
 
-            <!-- Type of Key and Vulnerable Population -->
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Type of Key and Vulnerable Population:" VerticalOptions="Center" />
-                    <Label Text="*" TextColor="Red" VerticalOptions="Center" />
-                </StackLayout>
-                <Picker Title="--Select--" 
-                        ItemsSource="{Binding KeyPopulationTypes}" 
-                        SelectedItem="{Binding SelectedKeyPopulationType}" />
+                <!-- Type of Key and Vulnerable Population -->
+                <Label Text="Type of Key and Vulnerable Population" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select" 
+                            ItemsSource="{Binding KeyPopulationTypes}" 
+                            SelectedItem="{Binding SelectedKeyPopulationType}"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
                 <Label Text="{Binding KeyPopulationTypeError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding KeyPopulationTypeError, Converter={StaticResource StringNotEmptyConverter}}" />
-            </StackLayout>
+                   IsVisible="{Binding KeyPopulationTypeError, Converter={StaticResource StringNotEmptyConverter}}" />
 
-            <!-- Occupation -->
-            <StackLayout>
-                <Label Text="Occupation:" VerticalOptions="Center" />
-                <Picker Title="--Select Occupation--" 
-                        ItemsSource="{Binding Occupations}" 
-                        SelectedItem="{Binding SelectedOccupation}" />
-            </StackLayout>
+                <!-- Occupation -->
+                <Label Text="Occupation" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select Occupation" 
+                            ItemsSource="{Binding Occupations}" 
+                            SelectedItem="{Binding SelectedOccupation}"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
 
-            <!-- Buttons -->
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,20,0,0">
-                <Button Text="Submit" 
-                        Command="{Binding SubmitCommand}"
-                        BackgroundColor="#3498db"
-                        TextColor="White"
-                        WidthRequest="120"
-                        HeightRequest="50"
-                        CornerRadius="5" />
+                <!-- Buttons -->
+                <StackLayout Orientation="Horizontal" 
+                           HorizontalOptions="Center" 
+                           Spacing="20" 
+                           Margin="0,10,0,0">
+                    <Button Text="Submit" 
+                            Command="{Binding SubmitCommand}"
+                            BackgroundColor="#3498db"
+                            TextColor="White"
+                            WidthRequest="120"
+                            HeightRequest="40"
+                            CornerRadius="5" />
 
-                <Button Text="Reset" 
-                        Command="{Binding ResetCommand}"
-                        BackgroundColor="#e74c3c"
-                        TextColor="White"
-                        WidthRequest="120"
-                        HeightRequest="50"
-                        CornerRadius="5" />
+                    <Button Text="Reset" 
+                            Command="{Binding ResetCommand}"
+                            BackgroundColor="#e74c3c"
+                            TextColor="White"
+                            WidthRequest="120"
+                            HeightRequest="40"
+                            CornerRadius="5" />
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

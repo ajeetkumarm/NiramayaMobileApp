@@ -28,6 +28,16 @@
         <ShellContent 
          ContentTemplate="{DataTemplate views:Registration}" />
     </FlyoutItem>
+    
+    <FlyoutItem Title="Registration List"
+             Icon="assign"
+             Route="RegistrationList"
+             x:Name="RegistrationListItem"
+             IsVisible="False">
+        <ShellContent 
+         ContentTemplate="{DataTemplate views:RegistrationList}" />
+    </FlyoutItem>
+    
     <Shell.FlyoutHeader>
         <StackLayout Padding="10,30" HorizontalOptions="FillAndExpand">
             <Label x:Name="lbUser" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" />

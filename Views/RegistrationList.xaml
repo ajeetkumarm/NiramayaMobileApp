@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NCD.ViewModels"
+             x:Class="NCD.Views.RegistrationList"
+             Title="Registration List"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:RegistrationListViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Search Bar -->
+        <Border Padding="0" 
+                Stroke="LightGray" 
+                StrokeThickness="1"
+                HorizontalOptions="FillAndExpand"
+                Margin="15,15,15,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="8"/>
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="*,Auto" Padding="0">
+                <Entry Text="{Binding SearchQuery}"
+                       Placeholder="Search by ID/Name/Father Name"
+                       Margin="10,0" 
+                       VerticalOptions="Center"/>
+                <Button Grid.Column="1"
+                        Text="🔍"
+                        Command="{Binding SearchCommand}"
+                        Margin="0,0,5,0"
+                        WidthRequest="50"
+                        BackgroundColor="Transparent"
+                        TextColor="#007AFF"/>
+            </Grid>
+        </Border>
+
+        <!-- Registration List -->
+        <RefreshView Grid.Row="1" 
+                     IsRefreshing="{Binding IsRefreshing}" 
+                     Command="{Binding RefreshCommand}">
+            <CollectionView ItemsSource="{Binding Registrations}"
+                            Margin="5"
+                            HorizontalOptions="FillAndExpand"
+                            SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="No registrations found"
+                               FontSize="16"
+                               TextColor="Gray"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="10,5,0,5" Padding="10" StrokeThickness="1"  Stroke="LightGray">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8"/>
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                                <!-- Row 1: Name -->
+                                <Label Grid.Row="0" Grid.Column="0" Text="Name:" FontAttributes="Bold" TextColor="#333333" Margin="0,0,0,0" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="3,0,0,0" TextColor="#333333" />
+                                
+                                <!-- Row 2: Enrollment ID -->
+                                <Label Grid.Row="1" Grid.Column="0" Text="ID:" FontAttributes="Bold" TextColor="#333333" Margin="0,0,0,0" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding EnrollmentId}" Margin="3,0,0,0" LineBreakMode="CharacterWrap" TextColor="#333333" />
+                                
+                                <!-- Row 3: Father Name & Age -->
+                                <Label Grid.Row="2" Grid.Column="0" Text="Father:" FontAttributes="Bold" TextColor="#333333" Margin="0,0,0,0" />
+                                <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="3,0,0,0">
+                                    <Label Text="{Binding FatherName}" Margin="0,0,5,0" TextColor="#333333" />
+                                    <Label Text="|" TextColor="#CCCCCC" />
+                                    <Label Text="Age:" Margin="5,0,2,0" FontAttributes="Bold" TextColor="#333333" />
+                                    <Label Text="{Binding Age}" TextColor="#333333" />
+                                </StackLayout>
+                                
+                                <!-- Row 4: Location -->
+                                <Label Grid.Row="3" Grid.Column="0" Text="Location:" FontAttributes="Bold" TextColor="#333333" Margin="0,0,0,0" />
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Village}" Margin="3,0,0,0" TextColor="#333333" />
+                                
+                                <!-- Row 5: Action buttons -->
+                                <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                                             Orientation="Horizontal" 
+                                             HorizontalOptions="End"
+                                             Margin="0,10,0,0"
+                                             Spacing="10">
+                                    <Button Text="Details"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RegistrationListViewModel}}, Path=ViewDetailsCommand}"
+                                            CommandParameter="{Binding .}"
+                                            FontSize="12"
+                                            HeightRequest="30"
+                                            WidthRequest="70"
+                                            Padding="0"
+                                            BackgroundColor="#EEEEEE"
+                                            TextColor="#333333"/>
+                                    <Button Text="Edit"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RegistrationListViewModel}}, Path=EditCommand}"
+                                            CommandParameter="{Binding .}"
+                                            FontSize="12"
+                                            HeightRequest="30"
+                                            WidthRequest="60"
+                                            Padding="0"
+                                            BackgroundColor="#007AFF"
+                                            TextColor="White"/>
+                                    <Button Text="Screen"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RegistrationListViewModel}}, Path=ScreenCommand}"
+                                            CommandParameter="{Binding .}"
+                                            FontSize="12"
+                                            HeightRequest="30"
+                                            WidthRequest="70"
+                                            Padding="0"
+                                            BackgroundColor="#28A745"
+                                            TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage> 

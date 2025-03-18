@@ -4,10 +4,12 @@ namespace NCD.Views;
 
 public partial class Registration : ContentPage
 {
-	public Registration(RegistrationViewModel viewModel)
+	private RegistrationViewModel _viewModel;
+
+	public Registration()
 	{
 		InitializeComponent();
-		BindingContext = viewModel;
-
-    }
+		_viewModel = new RegistrationViewModel();
+		BindingContext = _viewModel;
+	}
 }

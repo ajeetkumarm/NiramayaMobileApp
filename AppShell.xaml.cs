@@ -15,6 +15,7 @@ namespace NCD
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(Dashboard), typeof(Dashboard));
             Routing.RegisterRoute(nameof(Registration), typeof(Registration));
+            Routing.RegisterRoute(nameof(RegistrationList), typeof(RegistrationList));
 
             // Register other pages here
         }
@@ -26,6 +27,7 @@ namespace NCD
             //LoginPage.IsVisible = false;
             DashboardItem.IsVisible = true;
             RegistrationItem.IsVisible = true;
+            RegistrationListItem.IsVisible = true;
         }
         
     }
