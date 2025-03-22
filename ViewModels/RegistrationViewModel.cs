@@ -167,52 +167,32 @@ namespace NCD.ViewModels
                     
                    // await Shell.Current.DisplayAlert("Data Loaded", debugInfo, "OK");
                     
-                    // Update collections on the UI thread
+                    // Update collections with thread safety
                     MainThread.BeginInvokeOnMainThread(() => {
-                        genders.Clear();
-                        districts.Clear();
-                        blocks.Clear();
-                        villages.Clear();
-                        marital.Clear();
-                        keyVulPopulation.Clear();
-                        occupations.Clear();
+                        // Instead of clearing and repopulating, replace with new collections
+                        // This ensures the UI gets proper notification
                         
-                        if (defaultData.Genders != null)
-                            foreach (var item in defaultData.Genders)
-                                genders.Add(item);
+                        Genders = new ObservableCollection<DropdownDTO>(defaultData.Genders ?? new List<DropdownDTO>());
+                        Districts = new ObservableCollection<DropdownDTO>(defaultData.Districts ?? new List<DropdownDTO>());
+                        Marital = new ObservableCollection<DropdownDTO>(defaultData.Marital ?? new List<DropdownDTO>());
+                        KeyVulPopulation = new ObservableCollection<DropdownDTO>(defaultData.KeyVulPopulation ?? new List<DropdownDTO>());
+                        Occupations = new ObservableCollection<DropdownDTO>(defaultData.Occupation ?? new List<DropdownDTO>());
                         
-                        if (defaultData.Districts != null)
-                            foreach (var item in defaultData.Districts)
-                                districts.Add(item);
+                        // Only set Block and Village collections if they should be populated initially
+                        if (defaultData.Blocks?.Any() == true)
+                            Blocks = new ObservableCollection<DropdownDTO>(defaultData.Blocks);
                         
-                        if (defaultData.Blocks != null)
-                            foreach (var item in defaultData.Blocks)
-                                blocks.Add(item);
+                        if (defaultData.Villages?.Any() == true)
+                            Villages = new ObservableCollection<DropdownDTO>(defaultData.Villages);
                         
-                        if (defaultData.Villages != null)
-                            foreach (var item in defaultData.Villages)
-                                villages.Add(item);
-                        
-                        if (defaultData.Marital != null)
-                            foreach (var item in defaultData.Marital)
-                                marital.Add(item);
-                        
-                        if (defaultData.KeyVulPopulation != null)
-                            foreach (var item in defaultData.KeyVulPopulation)
-                                keyVulPopulation.Add(item);
-                        
-                        if (defaultData.Occupation != null)
-                            foreach (var item in defaultData.Occupation)
-                                occupations.Add(item);
-                        
-                        // Set default values for selections after populating data
-                        OnPropertyChanged(nameof(genders));
-                        OnPropertyChanged(nameof(districts));
-                        OnPropertyChanged(nameof(blocks));
-                        OnPropertyChanged(nameof(villages));
-                        OnPropertyChanged(nameof(marital));
-                        OnPropertyChanged(nameof(keyVulPopulation));
-                        OnPropertyChanged(nameof(occupations));
+                        // Set default values for selections
+                        SelectedDistrict = DefaultDropdown;
+                        SelectedBlock = DefaultDropdown;
+                        SelectedVillage = DefaultDropdown;
+                        SelectedGender = DefaultDropdown;
+                        SelectedMaritalStatus = DefaultDropdown;
+                        SelectedKeyVulPopulation = DefaultDropdown;
+                        SelectedOccupation = DefaultDropdown;
                     });
                 }
                 else
@@ -445,9 +425,15 @@ namespace NCD.ViewModels
         {
             try
             {
-                var _blocks = await RegistrationService.GetBlocksByDistrictAsync(districtId);
-                this.blocks = new ObservableCollection<DropdownDTO>(_blocks);
-                OnPropertyChanged(nameof(this.blocks));
+                var blocksList = await RegistrationService.GetBlocksByDistrictAsync(districtId);
+                
+                // Use the property setter to ensure change notification
+                MainThread.BeginInvokeOnMainThread(() => {
+                    Blocks = new ObservableCollection<DropdownDTO>(blocksList ?? new List<DropdownDTO>());
+                    // Reset block and village selections
+                    SelectedBlock = DefaultDropdown;
+                    Villages = new ObservableCollection<DropdownDTO>(); // Clear villages when district changes
+                });
             }
             catch (Exception ex)
             {
@@ -459,9 +445,14 @@ namespace NCD.ViewModels
         {
             try
             {
-                var _villages = await RegistrationService.GetVillagesByBlockAsync(blockId);
-                this.villages = new ObservableCollection<DropdownDTO>(_villages);
-                OnPropertyChanged(nameof(this.villages));
+                var villagesList = await RegistrationService.GetVillagesByBlockAsync(blockId);
+                
+                // Use the property setter to ensure change notification
+                MainThread.BeginInvokeOnMainThread(() => {
+                    Villages = new ObservableCollection<DropdownDTO>(villagesList ?? new List<DropdownDTO>());
+                    // Reset village selection
+                    SelectedVillage = DefaultDropdown;
+                });
             }
             catch (Exception ex)
             {
