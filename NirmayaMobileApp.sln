@@ -16,6 +16,7 @@ Global
 		{449B4150-D965-4222-8FA1-1A0306FFB21E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{449B4150-D965-4222-8FA1-1A0306FFB21E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{449B4150-D965-4222-8FA1-1A0306FFB21E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449B4150-D965-4222-8FA1-1A0306FFB21E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,5 +13,15 @@ namespace NCD.Utilities
             var userId = await SecureStorage.GetAsync("user_id");
             return userId != null ? int.Parse(userId) : 0;
         }
+        public static async Task<int> GetUserCategory()
+        {
+            var userCategory = await SecureStorage.GetAsync("user_Category");
+            return userCategory != null ? int.Parse(userCategory) : 0;
+        }
+        public static async Task<int> GetStateId()
+        {
+            var userId = await SecureStorage.GetAsync("state_Id");
+            return userId != null ? int.Parse(userId) : 0;
+        }
     }
 }

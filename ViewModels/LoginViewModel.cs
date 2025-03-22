@@ -100,9 +100,11 @@ namespace NCD.ViewModels
                 {
                     var userLoginValidate = JsonConvert.DeserializeObject<UserLoginValidateDTO>(response.Result.ToString());
                     await SecureStorage.Default.SetAsync("auth_token", userLoginValidate.Token);
-                    await SecureStorage.Default.SetAsync("user_id", userLoginValidate.Id.ToString());
+                    await SecureStorage.Default.SetAsync("user_id", userLoginValidate.UserCode.ToString());
+                    await SecureStorage.Default.SetAsync("user_Category", userLoginValidate.UserCategory.ToString());
                     await SecureStorage.Default.SetAsync("user_name", userLoginValidate.FirstName +" "+ userLoginValidate.LastName);
                     await SecureStorage.Default.SetAsync("user_email", userLoginValidate.Email);
+                    await SecureStorage.Default.SetAsync("state_Id", userLoginValidate.StateCode.ToString());
                     await _navigationService.NavigateToMainPageAsync();
                 }
                 else
@@ -130,7 +132,7 @@ namespace NCD.ViewModels
         [RelayCommand]
         private async Task ForgotPasswordAsync()
         {
-            await _navigationService.NavigateToAsync("ForgotPasswordPage");
+            await _navigationService.NavigateToAsync("ForgotPassword");
         }
     }
 }

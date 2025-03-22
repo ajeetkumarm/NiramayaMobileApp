@@ -42,7 +42,7 @@ namespace NCD.Services
             return _responseResult;
         }
 
-    public static async Task<ServiceResponseDTO> SaveStudent(Person student, string token)
+    public static async Task<ServiceResponseDTO> SaveStudent(Registration student, string token)
     {
         ServiceResponseDTO _responseResult = new();
         try

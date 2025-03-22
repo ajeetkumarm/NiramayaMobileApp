@@ -65,15 +65,30 @@ namespace NCD.ViewModels
                 IsRefreshing = true;
                 IsBusy = true;
 
-
                 int currentUserId = await AppHelper.GetUserId();
-
                 DateTime _fromDate = DateTime.Now.AddDays(-30);
                 DateTime _toDate = DateTime.Today.AddDays(1);
 
+                int UserCategory = await AppHelper.GetUserCategory();
+                string queryType = "A";
+
+                if (currentUserId == 1 || UserCategory == 1)
+                {
+                    queryType = "A";
+
+                }
+                else if (UserCategory == 7)
+                {
+                    queryType = "F";
+                }
+                else
+                {
+                    queryType = "T";
+                }
+
                 RegistrationFilterDTO filterdata = new RegistrationFilterDTO
                 {
-                    QueryType = "A",
+                    QueryType = queryType,
                     CreatedBy = currentUserId.ToString(),
                     FromDate = _fromDate,
                     ToDate = _toDate

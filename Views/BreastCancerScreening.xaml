@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NirmayaMobileApp.Views.BreastCancerScreening"
+             Title="Breast Cancer Screening">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <Grid Margin="0,0,0,10">
+                <Label Text="Breast Cancer Screening" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Button Text="Back" WidthRequest="80" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Clicked="OnBackButtonClicked"/>
+            </Grid>
+
+            <!-- Personal Information Section (Light Blue) -->
+            <Grid BackgroundColor="#D6EAF8" Padding="10" RowSpacing="5" ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Person Name" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding PersonName}" Grid.Row="0" Grid.Column="1" />
+                
+                <Label Text="Father/Husband Name" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding FatherHusbandName}" Grid.Row="1" Grid.Column="1" />
+                
+                <Label Text="Telephone No" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding TelephoneNo}" Grid.Row="2" Grid.Column="1" Keyboard="Telephone"/>
+                
+                <Label Text="Address" Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding Address}" Grid.Row="3" Grid.Column="1" />
+                
+                <Label Text="Age" Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding Age}" Grid.Row="4" Grid.Column="1" Keyboard="Numeric"/>
+            </Grid>
+
+            <!-- Menstrual/Pregnancy History Section (Light Orange) -->
+            <Grid BackgroundColor="#FDEBD0" Padding="10" RowSpacing="5" ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Date of Screening *" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Entry Text="{Binding DateOfScreening, StringFormat='{0:dd-MM-yyyy}'}" />
+                    <Image Source="calendar.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowDateOfScreeningPickerCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                
+                <Label Text="Examination By *" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Entry Text="{Binding ExaminationBy}" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+                
+                <Label Text="Date of Last Menstrual Period (LMP)" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Entry Text="{Binding DateOfLastMenstrualPeriod, StringFormat='{0:dd-MM-yyyy}'}" />
+                    <Image Source="calendar.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowLMPPickerCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                
+                <Label Text="Age at First Menstruation" Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding AgeAtFirstMenstruation}" Grid.Row="3" Grid.Column="1" Placeholder="Enter age" Keyboard="Numeric"/>
+                
+                <Label Text="Number of Pregnancies" Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding NumberOfPregnancies}" Grid.Row="4" Grid.Column="1" Placeholder="Enter number" Keyboard="Numeric"/>
+                
+                <Label Text="Number of Births" Grid.Row="5" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding NumberOfBirths}" Grid.Row="5" Grid.Column="1" Placeholder="Enter number" Keyboard="Numeric"/>
+                
+                <Label Text="Age at First Childbirth (in years)" Grid.Row="6" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry Text="{Binding AgeAtFirstChildbirth}" Grid.Row="6" Grid.Column="1" Placeholder="Enter age" Keyboard="Numeric"/>
+                
+                <Label Text="Breastfeeding History" Grid.Row="7" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="7" Grid.Column="1">
+                    <Entry Text="{Binding BreastfeedingHistory}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+            </Grid>
+
+            <!-- Breast Health History Section (Light Green) -->
+            <Grid BackgroundColor="#D5F5E3" Padding="10" RowSpacing="5" ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Menopausal Status" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Entry Text="{Binding MenopausalStatus}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+                
+                <Label Text="History of Breast Lumps" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Entry Text="{Binding HistoryOfBreastLumps}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+                
+                <Label Text="Previous Breast Biopsies" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Entry Text="{Binding PreviousBreastBiopsies}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+            </Grid>
+
+            <!-- Hormone History Section (Light Purple) -->
+            <Grid BackgroundColor="#E8DAEF" Padding="10" RowSpacing="5" ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Use of Hormonal Contraceptives" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Entry Text="{Binding UseOfHormonalContraceptives}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+                
+                <Label Text="Hormone Replacement Therapy (HRT)" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Entry Text="{Binding HormoneReplacementTherapy}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+            </Grid>
+
+            <!-- Risk Factors Section (Light Orange) -->
+            <Grid BackgroundColor="#FDEBD0" Padding="10" RowSpacing="5" ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Risk Factors" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="5">
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding IsAgeRiskFactor}" />
+                        <Label Text="Age" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding IsFamilyHistoryRiskFactor}" />
+                        <Label Text="Family History of Breast Cancer" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding IsGeneticMutationsRiskFactor}" />
+                        <Label Text="Genetic Mutations" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding IsPreviousRadiationTherapyRiskFactor}" />
+                        <Label Text="Previous Radiation Therapy" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding IsObesityRiskFactor}" />
+                        <Label Text="Obesity" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding IsOtherRiskFactor}" />
+                        <Label Text="Other" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                
+                <Label Text="Do you consume alcohol" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Entry Text="{Binding AlcoholConsumption}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+                
+                <Label Text="Do you Smoke" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Entry Text="{Binding Smoking}" Placeholder="--Select--" />
+                    <Image Source="dropdown.svg" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,10,0" />
+                </Grid>
+            </Grid>
+
+            <!-- Submit Button -->
+            <Button Text="Submit" Margin="0,10,0,20" HorizontalOptions="Center" Command="{Binding SubmitScreeningCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage> 

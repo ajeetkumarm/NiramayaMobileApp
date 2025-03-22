@@ -11,7 +11,7 @@
 
             <Label
             Text="Dashboard"
-            Style="{StaticResource Headline}"
+            StyleClass="Headline"
             SemanticProperties.HeadingLevel="Level1" />
 
            

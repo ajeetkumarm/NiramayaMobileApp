@@ -1,0 +1,54 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MAUI Application Structure Rules
+
+## Core Directories
+- `Services/`: Contains service classes that implement business logic and data operations
+  - Files should end with `Service.cs`
+  - Common pattern: `{Feature}Service.cs`
+
+- `ViewModels/`: Contains view model classes following MVVM pattern
+  - Files should end with `ViewModel.cs`
+  - Common pattern: `{Feature}ViewModel.cs`
+
+- `Views/`: Contains XAML views and their code-behind files
+  - XAML files: `{Feature}.xaml`
+  - Code-behind: `{Feature}.xaml.cs`
+
+- `Validators/`: Contains validation logic classes
+  - Files should end with `Validator.cs`
+  - Common pattern: `{Feature}Validator.cs`
+
+- `Utilities/`: Contains helper and utility classes
+  - Files should end with `Helper.cs` or describe utility purpose
+
+## File Naming Conventions
+1. XAML Views:
+   - Main window: `MainPage.xaml`
+   - Feature pages: `{Feature}Page.xaml`
+   - User controls: `{Feature}.xaml`
+
+2. Code-behind:
+   - Must match XAML file name with `.cs` extension
+   - Example: `LoginPage.xaml` → `LoginPage.xaml.cs`
+
+3. Services:
+   - Must use `Service` suffix
+   - Example: `LoginService.cs`, `StudentService.cs`
+
+4. ViewModels:
+   - Must use `ViewModel` suffix
+   - Should correspond to related view
+   - Example: `LoginViewModel.cs`
+
+## Project Files
+- `*.csproj`: Project configuration file
+- `*.csproj.user`: User-specific project settings
+- `*.sln`: Solution file
+
+## Base Classes
+- `BaseService.cs`: Common service functionality
+- `BasePage.cs`: Common view functionality

@@ -1,4 +1,6 @@
 ﻿using NCD.Views;
+using Nirmaya.Views;
+// using NirmayaMobileApp.Views;
 
 namespace NCD
 {
@@ -16,6 +18,8 @@ namespace NCD
             Routing.RegisterRoute(nameof(Dashboard), typeof(Dashboard));
             Routing.RegisterRoute(nameof(Registration), typeof(Registration));
             Routing.RegisterRoute(nameof(RegistrationList), typeof(RegistrationList));
+            Routing.RegisterRoute(nameof(ForgotPassword), typeof(ForgotPassword));
+           // Routing.RegisterRoute(nameof(BreastCancerScreening), typeof(BreastCancerScreening));
 
             // Register other pages here
         }
@@ -28,6 +32,7 @@ namespace NCD
             DashboardItem.IsVisible = true;
             RegistrationItem.IsVisible = true;
             RegistrationListItem.IsVisible = true;
+            // BreastCancerScreeningItem.IsVisible = true;
         }
         
     }

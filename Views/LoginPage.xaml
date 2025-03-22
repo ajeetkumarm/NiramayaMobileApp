@@ -54,7 +54,7 @@
                                 <Image Grid.Column="0" Margin="5,0,0,0" Source="lock" HeightRequest="36" VerticalOptions="Center" HorizontalOptions="Center" />
                                 <Entry Grid.Column="1" FontSize="15" TextColor="Black" IsPassword="True" Placeholder="********" 
                                        PlaceholderColor="{StaticResource Gray500}" Text="{Binding Password, Mode=TwoWay}" 
-                                       Style="{StaticResource NoUnderlineEntry}"
+                                       StyleClass="NoUnderlineEntry"
                                        />
                             </Grid>
                         </Border>

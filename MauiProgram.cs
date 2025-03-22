@@ -1,7 +1,6 @@
 ﻿using NCD.Services;
 using NCD.ViewModels;
 using NCD.Views;
-using Microsoft.Extensions.Logging;
 
 namespace NCD
 {
@@ -19,29 +18,29 @@ namespace NCD
                 })
                 ;
             // Configure the Entry handler for Android
-            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
-            {
-#if ANDROID
-                // Remove the underline by setting the BackgroundTintList to transparent
-                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-#endif
-            });
+//            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+//            {
+//#if ANDROID
+//                // Remove the underline by setting the BackgroundTintList to transparent
+//                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+//#endif
+//            });
 
-            Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping(nameof(DatePicker), (handler, view) =>
-            {
-#if ANDROID
-                // Remove the underline by setting the BackgroundTintList to transparent
-                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-#endif
-            });
+//            Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping(nameof(DatePicker), (handler, view) =>
+//            {
+//#if ANDROID
+//                // Remove the underline by setting the BackgroundTintList to transparent
+//                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+//#endif
+//            });
 
-            Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(Picker), (handler, view) =>
-            {
-#if ANDROID
-                // Remove the underline by setting the BackgroundTintList to transparent
-                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-#endif
-            });
+//            Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(Picker), (handler, view) =>
+//            {
+//#if ANDROID
+//                // Remove the underline by setting the BackgroundTintList to transparent
+//                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+//#endif
+//            });
             
 
             builder.Services.AddSingleton<INavigationService, NavigationService>();
@@ -56,9 +55,11 @@ namespace NCD
             builder.Services.AddTransient<Registration>();
             //builder.Services.AddTransient<AppShell>();
 
-#if DEBUG
-            builder.Logging.AddDebug();
-#endif
+//#if DEBUG
+//            builder.Logging.AddDebug();
+//#endif
+
+            //builder.Services.AddHttpClient<IBreastCancerScreeningService, BreastCancerScreeningService>();
 
             return builder.Build();
         }

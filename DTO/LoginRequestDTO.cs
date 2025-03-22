@@ -14,7 +14,9 @@ namespace NCD.DTO
 
     public class UserLoginValidateDTO
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int UserCode { get; set; }
+        public int UserCategory { get; set; }
         public int RoleId { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -22,5 +24,6 @@ namespace NCD.DTO
         public int ReporteeRoleId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string Token { get; set; } = string.Empty;
+        public int StateCode { get; set; }
     }
 }

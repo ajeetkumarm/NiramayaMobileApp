@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MAUI .NET Core cursor navigation rules
+
+# XAML file navigation
+- extension: .xaml
+  jumps:
+    # Navigate between opening and closing tags
+    - from: <([A-Za-z0-9_:\.]+)([^>]*?)>
+      to: </\1>
+    
+    # Navigate between property and event handlers
+    - from: ([A-Za-z0-9_]+)="({[^}]+})"
+      to: \2
+    
+    - from: ({[^}]+})
+      to: ([A-Za-z0-9_]+)="\1"
+
+# C# code-behind file navigation
+- extension: .xaml.cs
+  jumps:
+    # Navigate between component initialization and handlers
+    - from: InitializeComponent\(\);
+      to: (void\s+[A-Za-z0-9_]+_[A-Za-z0-9_]+\s*\()
+    
+    # Navigate between event handlers and XAML element references
+    - from: (void\s+)([A-Za-z0-9_]+)_([A-Za-z0-9_]+)(\s*\()
+      to: ([^a-zA-Z0-9_])\2([^a-zA-Z0-9_])
+    
+    # Navigate between property definitions and usage
+    - from: (public\s+[A-Za-z0-9_<>]+\s+)([A-Za-z0-9_]+)(\s*{\s*get)
+      to: ([^a-zA-Z0-9_])\2([^a-zA-Z0-9_])
+
+# Resource dictionary navigation
+- extension: .xaml
+  scope: ResourceDictionary
+  jumps:
+    - from: <Style\s+.*?x:Key="([^"]+)"
+      to: Style="{StaticResource\s+\1}"
+    
+    - from: Style="{StaticResource\s+([^}]+)}"
+      to: <Style\s+.*?x:Key="\1"
+
+# Shell navigation
+- extension: .xaml
+  scope: Shell
+  jumps:
+    - from: <ShellContent\s+.*?Route="([^"]+)"
+      to: Shell.Current.GoToAsync\s*\(\s*"\1"
+    
+    - from: Shell.Current.GoToAsync\s*\(\s*"([^"]+)"
+      to: <ShellContent\s+.*?Route="\1"
+  

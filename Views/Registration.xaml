@@ -29,7 +29,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
-                    <Entry Text="{Binding Name}" 
+                    <Entry Text="{Binding Registration.NameofthePerson}" 
                            Placeholder="Enter full name" 
                            Margin="10,0"
                            HeightRequest="40"
@@ -54,7 +54,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
-                    <Entry Text="{Binding FatherHusbandName}" 
+                    <Entry Text="{Binding Registration.FatherName}" 
                            Placeholder="Enter father/husband name" 
                            Margin="10,0"
                            HeightRequest="40"
@@ -79,7 +79,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
-                    <Entry Text="{Binding Age}" 
+                    <Entry Text="{Binding Registration.Age}" 
                            Placeholder="0" 
                            Keyboard="Numeric" 
                            Margin="10,0"
@@ -104,7 +104,8 @@
                     </Border.StrokeShape>
                     <Picker Title="Select" 
                             ItemsSource="{Binding Genders}" 
-                            SelectedItem="{Binding SelectedGender}"
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.Gender}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>
@@ -126,8 +127,9 @@
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
                     <Picker Title="Select" 
-                            ItemsSource="{Binding MaritalStatuses}" 
-                            SelectedItem="{Binding SelectedMaritalStatus}"
+                            ItemsSource="{Binding Marital}" 
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.MaritalStatus}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>
@@ -148,7 +150,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
-                    <Entry Text="{Binding TelephoneNo}" 
+                    <Entry Text="{Binding Registration.TelephoneNo}" 
                            Placeholder="Enter telephone number" 
                            Keyboard="Telephone" 
                            Margin="10,0"
@@ -171,13 +173,87 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
-                    <Editor Text="{Binding Address}" 
+                    <Editor Text="{Binding Registration.Address}" 
                             Placeholder="Enter address" 
                             HeightRequest="80"
                             AutoSize="TextChanges"
                             Margin="10,5"
                             FontSize="14"/>
                 </Border>
+
+                <!-- District -->
+                <Label Text="District" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select District" 
+                            ItemsSource="{Binding Districts}" 
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.District}"
+                            SelectedIndexChanged="DistrictPicker_SelectedIndexChanged"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
+                <Label Text="{Binding DistrictError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding DistrictError, Converter={StaticResource StringNotEmptyConverter}}" />
+
+                <!-- Block -->
+                <Label Text="Block" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select Block" 
+                            ItemsSource="{Binding Blocks}" 
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.Block}"
+                            SelectedIndexChanged="BlockPicker_SelectedIndexChanged"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
+                <Label Text="{Binding BlockError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding BlockError, Converter={StaticResource StringNotEmptyConverter}}" />
+
+                <!-- Village -->
+                <Label Text="Village" 
+                       FontSize="14" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Margin="0,0,0,0"/>
+                <Border Padding="0" 
+                        Stroke="LightGray" 
+                        StrokeThickness="1"
+                        Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select Village" 
+                            ItemsSource="{Binding Villages}" 
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.Village}"
+                            Margin="10,0"
+                            HeightRequest="40"
+                            FontSize="14"/>
+                </Border>
+                <Label Text="{Binding VillageError}" TextColor="Red" FontSize="Small"
+                       IsVisible="{Binding VillageError, Converter={StaticResource StringNotEmptyConverter}}" />
 
                 <!-- Type of Key and Vulnerable Population -->
                 <Label Text="Type of Key and Vulnerable Population" 
@@ -193,8 +269,9 @@
                         <RoundRectangle CornerRadius="5"/>
                     </Border.StrokeShape>
                     <Picker Title="Select" 
-                            ItemsSource="{Binding KeyPopulationTypes}" 
-                            SelectedItem="{Binding SelectedKeyPopulationType}"
+                            ItemsSource="{Binding KeyVulPopulation}" 
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.KeyVulPopulation}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>
@@ -217,7 +294,8 @@
                     </Border.StrokeShape>
                     <Picker Title="Select Occupation" 
                             ItemsSource="{Binding Occupations}" 
-                            SelectedItem="{Binding SelectedOccupation}"
+                            ItemDisplayBinding="{Binding Text}"
+                            SelectedItem="{Binding Registration.Occupation}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>

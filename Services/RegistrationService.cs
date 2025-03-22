@@ -1,5 +1,6 @@
 using NCD.DTO;
 using Newtonsoft.Json;
+using Nirmaya.DTO;
 using System.Text;
 
 namespace NCD.Services
@@ -7,7 +8,31 @@ namespace NCD.Services
     public class RegistrationService : BaseService
     {
         private const string RegistrationPath = "Registration";
-        
+
+        public static async Task<RegistrationDefaultDataDTO> GetDefaultDataAsync(int stateId)
+        {
+            RegistrationDefaultDataDTO registrations = new();
+            try
+            {
+                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/RegistrationDefaultData/{stateId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string dataResult = await response.Content.ReadAsStringAsync();
+                    if(!string.IsNullOrEmpty(dataResult))
+                    {
+                        registrations = JsonConvert.DeserializeObject<RegistrationDefaultDataDTO>(dataResult) ?? new RegistrationDefaultDataDTO();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error
+            }
+            return registrations;
+        }
+
+
         /// <summary>
         /// Get all registrations
         /// </summary>
@@ -24,10 +49,14 @@ namespace NCD.Services
                 {
                     string dataResult = await response.Content.ReadAsStringAsync();
                     var serviceResponse = JsonConvert.DeserializeObject<ServiceResponseDTO>(dataResult);
-                    
+
                     if (serviceResponse != null && serviceResponse.Result != null)
                     {
-                        registrations = JsonConvert.DeserializeObject<List<RegistrationListItem>>(serviceResponse.Result.ToString());
+                        var resultString = serviceResponse.Result.ToString();
+                        if (!string.IsNullOrEmpty(resultString))
+                        {
+                            registrations = JsonConvert.DeserializeObject<List<RegistrationListItem>>(resultString);
+                        }
                     }
                 }
             }
@@ -37,7 +66,7 @@ namespace NCD.Services
             }
             return registrations ?? new List<RegistrationListItem>();
         }
-        
+
         /// <summary>
         /// Search registrations by query string
         /// </summary>
@@ -53,10 +82,14 @@ namespace NCD.Services
                 {
                     string dataResult = await response.Content.ReadAsStringAsync();
                     var serviceResponse = JsonConvert.DeserializeObject<ServiceResponseDTO>(dataResult);
-                    
+
                     if (serviceResponse != null && serviceResponse.Result != null)
                     {
-                        registrations = JsonConvert.DeserializeObject<List<RegistrationListItem>>(serviceResponse.Result.ToString());
+                        var resultString = serviceResponse.Result.ToString();
+                        if (!string.IsNullOrEmpty(resultString))
+                        {
+                            registrations = JsonConvert.DeserializeObject<List<RegistrationListItem>>(resultString);
+                        }
                     }
                 }
             }
@@ -66,7 +99,7 @@ namespace NCD.Services
             }
             return registrations ?? new List<RegistrationListItem>();
         }
-        
+
         /// <summary>
         /// Get a registration by ID
         /// </summary>
@@ -82,10 +115,14 @@ namespace NCD.Services
                 {
                     string dataResult = await response.Content.ReadAsStringAsync();
                     var serviceResponse = JsonConvert.DeserializeObject<ServiceResponseDTO>(dataResult);
-                    
+
                     if (serviceResponse != null && serviceResponse.Result != null)
                     {
-                        registration = JsonConvert.DeserializeObject<RegistrationListItem>(serviceResponse.Result.ToString());
+                        var resultString = serviceResponse.Result.ToString();
+                        if (!string.IsNullOrEmpty(resultString))
+                        {
+                            registration = JsonConvert.DeserializeObject<RegistrationListItem>(resultString);
+                        }
                     }
                 }
             }
@@ -94,6 +131,60 @@ namespace NCD.Services
                 // Log error
             }
             return registration ?? new RegistrationListItem();
+        }
+
+        /// <summary>
+        /// Get blocks for a specific district
+        /// </summary>
+        /// <param name="districtId">District ID</param>
+        /// <returns>List of blocks in the specified district</returns>
+        public static async Task<List<DropdownDTO>> GetBlocksByDistrictAsync(int districtId)
+        {
+            List<DropdownDTO> blocks = new();
+            try
+            {
+                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/GetBlocksByDistrict?districtId={districtId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string dataResult = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrEmpty(dataResult))
+                    {
+                        blocks = JsonConvert.DeserializeObject<List<DropdownDTO>>(dataResult) ?? new List<DropdownDTO>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error
+            }
+            return blocks ?? new List<DropdownDTO>();
+        }
+
+        /// <summary>
+        /// Get villages for a specific block
+        /// </summary>
+        /// <param name="blockId">Block ID</param>
+        /// <returns>List of villages in the specified block</returns>
+        public static async Task<List<DropdownDTO>> GetVillagesByBlockAsync(int blockId)
+        {
+            List<DropdownDTO> villages = new();
+            try
+            {
+                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/GetVillagesByBlock?blockId={blockId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string dataResult = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrEmpty(dataResult))
+                    {
+                        villages = JsonConvert.DeserializeObject<List<DropdownDTO>>(dataResult) ?? new List<DropdownDTO>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error
+            }
+            return villages ?? new List<DropdownDTO>();
         }
     }
 } 
