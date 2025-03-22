@@ -15,7 +15,54 @@
     <ScrollView>
         <Grid>
             <StackLayout Padding="20" Spacing="5">
+                <!-- District -->
+                <Label Text="District" FontSize="14"  FontAttributes="Bold" TextColor="Black" Margin="0,0,0,0"/>
+                <Border Padding="0" Stroke="LightGray" StrokeThickness="1" Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select District" 
+                    ItemsSource="{Binding Districts, Mode=TwoWay}" 
+                    ItemDisplayBinding="{Binding Text}"
+                    SelectedItem="{Binding SelectedDistrict, Mode=TwoWay}"
+                    Margin="10,0"
+                    HeightRequest="40"
+                    FontSize="14"/>
+                </Border>
+                <Label Text="{Binding DistrictError}" TextColor="Red" FontSize="Small" IsVisible="{Binding DistrictError, Converter={StaticResource StringNotEmptyConverter}}" />
 
+                <!-- Block -->
+                <Label Text="Block" FontSize="14" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,0"/>
+                <Border Padding="0" Stroke="LightGray" StrokeThickness="1" Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select Block" 
+                     ItemsSource="{Binding Blocks}" 
+                     ItemDisplayBinding="{Binding Text}"
+                     SelectedItem="{Binding SelectedBlock, Mode=TwoWay}"
+                     Margin="10,0"
+                     HeightRequest="40"
+                     FontSize="14"/>
+                </Border>
+                <Label Text="{Binding BlockError}" TextColor="Red" FontSize="Small" IsVisible="{Binding BlockError, Converter={StaticResource StringNotEmptyConverter}}" />
+
+                <!-- Village -->
+                <Label Text="Village" FontSize="14" FontAttributes="Bold" TextColor="Black"  Margin="0,0,0,0"/>
+                <Border Padding="0" Stroke="LightGray" StrokeThickness="1" Margin="0,0,0,2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Picker Title="Select Village" 
+                     ItemsSource="{Binding Villages}" 
+                     ItemDisplayBinding="{Binding Text}"
+                     SelectedItem="{Binding SelectedVillage, Mode=TwoWay}"
+                     Margin="10,0"
+                     HeightRequest="40"
+                     FontSize="14"/>
+                </Border>
+                <Label Text="{Binding VillageError}" TextColor="Red" FontSize="Small"
+       IsVisible="{Binding VillageError, Converter={StaticResource StringNotEmptyConverter}}" />
                 <!-- Name of the Person -->
                 <Label Text="Name of the Person" 
                        FontSize="14" 
@@ -105,7 +152,7 @@
                     <Picker Title="Select" 
                             ItemsSource="{Binding Genders}" 
                             ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.Gender}"
+                            SelectedItem="{Binding SelectedGender, Mode=TwoWay}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>
@@ -129,7 +176,7 @@
                     <Picker Title="Select" 
                             ItemsSource="{Binding Marital}" 
                             ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.MaritalStatus}"
+                            SelectedItem="{Binding SelectedMaritalStatus, Mode=TwoWay}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>
@@ -181,79 +228,7 @@
                             FontSize="14"/>
                 </Border>
 
-                <!-- District -->
-                <Label Text="District" 
-                       FontSize="14" 
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       Margin="0,0,0,0"/>
-                <Border Padding="0" 
-                        Stroke="LightGray" 
-                        StrokeThickness="1"
-                        Margin="0,0,0,2">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="5"/>
-                    </Border.StrokeShape>
-                    <Picker Title="Select District" 
-                            ItemsSource="{Binding Districts}" 
-                            ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.District}"
-                            SelectedIndexChanged="DistrictPicker_SelectedIndexChanged"
-                            Margin="10,0"
-                            HeightRequest="40"
-                            FontSize="14"/>
-                </Border>
-                <Label Text="{Binding DistrictError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding DistrictError, Converter={StaticResource StringNotEmptyConverter}}" />
 
-                <!-- Block -->
-                <Label Text="Block" 
-                       FontSize="14" 
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       Margin="0,0,0,0"/>
-                <Border Padding="0" 
-                        Stroke="LightGray" 
-                        StrokeThickness="1"
-                        Margin="0,0,0,2">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="5"/>
-                    </Border.StrokeShape>
-                    <Picker Title="Select Block" 
-                            ItemsSource="{Binding Blocks}" 
-                            ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.Block}"
-                            SelectedIndexChanged="BlockPicker_SelectedIndexChanged"
-                            Margin="10,0"
-                            HeightRequest="40"
-                            FontSize="14"/>
-                </Border>
-                <Label Text="{Binding BlockError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding BlockError, Converter={StaticResource StringNotEmptyConverter}}" />
-
-                <!-- Village -->
-                <Label Text="Village" 
-                       FontSize="14" 
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       Margin="0,0,0,0"/>
-                <Border Padding="0" 
-                        Stroke="LightGray" 
-                        StrokeThickness="1"
-                        Margin="0,0,0,2">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="5"/>
-                    </Border.StrokeShape>
-                    <Picker Title="Select Village" 
-                            ItemsSource="{Binding Villages}" 
-                            ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.Village}"
-                            Margin="10,0"
-                            HeightRequest="40"
-                            FontSize="14"/>
-                </Border>
-                <Label Text="{Binding VillageError}" TextColor="Red" FontSize="Small"
-                       IsVisible="{Binding VillageError, Converter={StaticResource StringNotEmptyConverter}}" />
 
                 <!-- Type of Key and Vulnerable Population -->
                 <Label Text="Type of Key and Vulnerable Population" 
@@ -271,7 +246,7 @@
                     <Picker Title="Select" 
                             ItemsSource="{Binding KeyVulPopulation}" 
                             ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.KeyVulPopulation}"
+                            SelectedItem="{Binding SelectedKeyVulPopulation, Mode=TwoWay}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>
@@ -295,7 +270,7 @@
                     <Picker Title="Select Occupation" 
                             ItemsSource="{Binding Occupations}" 
                             ItemDisplayBinding="{Binding Text}"
-                            SelectedItem="{Binding Registration.Occupation}"
+                            SelectedItem="{Binding SelectedOccupation, Mode=TwoWay}"
                             Margin="10,0"
                             HeightRequest="40"
                             FontSize="14"/>

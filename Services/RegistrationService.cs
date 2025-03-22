@@ -143,7 +143,7 @@ namespace NCD.Services
             List<DropdownDTO> blocks = new();
             try
             {
-                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/GetBlocksByDistrict?districtId={districtId}");
+                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/FetchBlockByDistrictId/{districtId}");
                 if (response.IsSuccessStatusCode)
                 {
                     string dataResult = await response.Content.ReadAsStringAsync();
@@ -170,7 +170,7 @@ namespace NCD.Services
             List<DropdownDTO> villages = new();
             try
             {
-                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/GetVillagesByBlock?blockId={blockId}");
+                HttpResponseMessage response = await Client.GetAsync(BaseUrl + RegistrationPath + $"/FetchVillageByBlockId/{blockId}");
                 if (response.IsSuccessStatusCode)
                 {
                     string dataResult = await response.Content.ReadAsStringAsync();
@@ -185,6 +185,31 @@ namespace NCD.Services
                 // Log error
             }
             return villages ?? new List<DropdownDTO>();
+        }
+
+
+        public static async Task<ServiceResponseDTO> SaveRegistration(Registration model)
+        {
+            ServiceResponseDTO serviceResponse = new();
+            try
+            {
+               
+                var jsonContent = JsonConvert.SerializeObject(model);
+                var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await Client.PostAsync(BaseUrl + RegistrationPath + $"/Addregistration", stringContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    string dataResult = await response.Content.ReadAsStringAsync();
+                    serviceResponse = JsonConvert.DeserializeObject<ServiceResponseDTO>(dataResult)?? new ServiceResponseDTO();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error
+            }
+
+            return serviceResponse;
         }
     }
 } 
