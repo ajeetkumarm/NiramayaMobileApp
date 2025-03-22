@@ -2,6 +2,7 @@
 {
     public class RegistrationDefaultDataDTO
     {
+        public IEnumerable<DropdownDTO> YesNoOptions { get; set; } = [];
         public IEnumerable<DropdownDTO> Genders { get; set; } = [];
         public IEnumerable<DropdownDTO> Blocks { get; set; } = [];
         public IEnumerable<DropdownDTO> Districts { get; set; } = [];

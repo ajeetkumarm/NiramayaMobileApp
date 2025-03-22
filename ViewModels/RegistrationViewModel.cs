@@ -44,6 +44,9 @@ namespace NCD.ViewModels
         private ObservableCollection<DropdownDTO> occupations = new();
 
         [ObservableProperty]
+        private ObservableCollection<DropdownDTO> yesNoOptions = new();
+
+        [ObservableProperty]
         private DropdownDTO defaultDropdown;
 
         // Error properties
@@ -102,6 +105,7 @@ namespace NCD.ViewModels
         {
             // Initialize registration object
             Registration = new Registration();
+            // Registration.CreatedBy =  
 
             DefaultDropdown = new DropdownDTO
             {
@@ -110,6 +114,7 @@ namespace NCD.ViewModels
             };
 
             // Initialize empty collections to prevent null reference
+            yesNoOptions = new ObservableCollection<DropdownDTO>();
             genders = new ObservableCollection<DropdownDTO>();
             districts = new ObservableCollection<DropdownDTO>();
             blocks = new ObservableCollection<DropdownDTO>();
@@ -151,49 +156,33 @@ namespace NCD.ViewModels
             {
                 var stateId = await AppHelper.GetStateId();
                 
-                // Add debug info
-                // await Shell.Current.DisplayAlert("Debug", $"Loading data for state ID: {stateId}", "OK");
-                
                 // Load default data for dropdown lists
                 var defaultData = await RegistrationService.GetDefaultDataAsync(stateId);
                 
                 if (defaultData != null)
                 {
-                    // Debug counts
-                    //string debugInfo = $"Districts: {defaultData.Districts?.Count() ?? 0}\n" +
-                    //                 $"Blocks: {defaultData.Blocks?.Count() ?? 0}\n" +
-                    //                 $"Villages: {defaultData.Villages?.Count() ?? 0}\n" +
-                    //                 $"Genders: {defaultData.Genders?.Count() ?? 0}";
+                    // The ObservableProperty pattern will handle the proper notifications
+                    YesNoOptions = new ObservableCollection<DropdownDTO>(defaultData.YesNoOptions ?? new List<DropdownDTO>());
+                    Genders = new ObservableCollection<DropdownDTO>(defaultData.Genders ?? new List<DropdownDTO>());
+                    Districts = new ObservableCollection<DropdownDTO>(defaultData.Districts ?? new List<DropdownDTO>());
+                    Marital = new ObservableCollection<DropdownDTO>(defaultData.Marital ?? new List<DropdownDTO>());
+                    KeyVulPopulation = new ObservableCollection<DropdownDTO>(defaultData.KeyVulPopulation ?? new List<DropdownDTO>());
+                    Occupations = new ObservableCollection<DropdownDTO>(defaultData.Occupation ?? new List<DropdownDTO>());
                     
-                   // await Shell.Current.DisplayAlert("Data Loaded", debugInfo, "OK");
+                    if (defaultData.Blocks?.Any() == true)
+                        Blocks = new ObservableCollection<DropdownDTO>(defaultData.Blocks);
                     
-                    // Update collections with thread safety
-                    MainThread.BeginInvokeOnMainThread(() => {
-                        // Instead of clearing and repopulating, replace with new collections
-                        // This ensures the UI gets proper notification
-                        
-                        Genders = new ObservableCollection<DropdownDTO>(defaultData.Genders ?? new List<DropdownDTO>());
-                        Districts = new ObservableCollection<DropdownDTO>(defaultData.Districts ?? new List<DropdownDTO>());
-                        Marital = new ObservableCollection<DropdownDTO>(defaultData.Marital ?? new List<DropdownDTO>());
-                        KeyVulPopulation = new ObservableCollection<DropdownDTO>(defaultData.KeyVulPopulation ?? new List<DropdownDTO>());
-                        Occupations = new ObservableCollection<DropdownDTO>(defaultData.Occupation ?? new List<DropdownDTO>());
-                        
-                        // Only set Block and Village collections if they should be populated initially
-                        if (defaultData.Blocks?.Any() == true)
-                            Blocks = new ObservableCollection<DropdownDTO>(defaultData.Blocks);
-                        
-                        if (defaultData.Villages?.Any() == true)
-                            Villages = new ObservableCollection<DropdownDTO>(defaultData.Villages);
-                        
-                        // Set default values for selections
-                        SelectedDistrict = DefaultDropdown;
-                        SelectedBlock = DefaultDropdown;
-                        SelectedVillage = DefaultDropdown;
-                        SelectedGender = DefaultDropdown;
-                        SelectedMaritalStatus = DefaultDropdown;
-                        SelectedKeyVulPopulation = DefaultDropdown;
-                        SelectedOccupation = DefaultDropdown;
-                    });
+                    if (defaultData.Villages?.Any() == true)
+                        Villages = new ObservableCollection<DropdownDTO>(defaultData.Villages);
+                    
+                    // Set default values
+                    SelectedDistrict = DefaultDropdown;
+                    SelectedBlock = DefaultDropdown;
+                    SelectedVillage = DefaultDropdown;
+                    SelectedGender = DefaultDropdown;
+                    SelectedMaritalStatus = DefaultDropdown;
+                    SelectedKeyVulPopulation = DefaultDropdown;
+                    SelectedOccupation = DefaultDropdown;
                 }
                 else
                 {
@@ -215,6 +204,16 @@ namespace NCD.ViewModels
             {
                 try
                 {
+                    var _createdBy = await AppHelper.GetUserId();
+
+                    Registration.CreatedBy = _createdBy.ToString();
+                    Registration.StateId = await AppHelper.GetStateId();
+                    Registration.QueryType = Registration.Id==0 ? "A" : "U";
+                    Registration.EnrollmentId = Guid.NewGuid().ToString();
+                    Registration.TBEnrollmentid = Guid.NewGuid().ToString();
+                    Registration.ScreeningStatus = "Screened";
+                    
+
                     // Registration object is already populated with the form data
                     var response = await RegistrationService.SaveRegistration(Registration);
                     if (response.Success)
@@ -426,14 +425,9 @@ namespace NCD.ViewModels
             try
             {
                 var blocksList = await RegistrationService.GetBlocksByDistrictAsync(districtId);
-                
-                // Use the property setter to ensure change notification
-                MainThread.BeginInvokeOnMainThread(() => {
-                    Blocks = new ObservableCollection<DropdownDTO>(blocksList ?? new List<DropdownDTO>());
-                    // Reset block and village selections
-                    SelectedBlock = DefaultDropdown;
-                    Villages = new ObservableCollection<DropdownDTO>(); // Clear villages when district changes
-                });
+                Blocks = new ObservableCollection<DropdownDTO>(blocksList ?? new List<DropdownDTO>());
+                SelectedBlock = DefaultDropdown;
+                Villages = new ObservableCollection<DropdownDTO>(); // Clear villages
             }
             catch (Exception ex)
             {
@@ -446,13 +440,8 @@ namespace NCD.ViewModels
             try
             {
                 var villagesList = await RegistrationService.GetVillagesByBlockAsync(blockId);
-                
-                // Use the property setter to ensure change notification
-                MainThread.BeginInvokeOnMainThread(() => {
-                    Villages = new ObservableCollection<DropdownDTO>(villagesList ?? new List<DropdownDTO>());
-                    // Reset village selection
-                    SelectedVillage = DefaultDropdown;
-                });
+                Villages = new ObservableCollection<DropdownDTO>(villagesList ?? new List<DropdownDTO>());
+                SelectedVillage = DefaultDropdown;
             }
             catch (Exception ex)
             {

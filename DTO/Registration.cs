@@ -2,6 +2,7 @@
 {
     public class Registration
     {
+        public string QueryType { get; set; }
         public int Id { get; set; }
         public string EnrollmentId { get; set; }
         public int StateId { get; set; }
